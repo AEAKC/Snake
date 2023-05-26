@@ -59,6 +59,7 @@ class FruitFactory{
                 fruits.add(createOrange(position));
             }else fruits.add(createBanana(position));
         }
+        System.out.println(fruits);
         return fruits;
     }
 

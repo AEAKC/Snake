@@ -21,22 +21,22 @@ public class Controller {
     }
     public boolean update(){
         head.move(); // Move snake
-        for (BaseFruit fruit: // Check if any apples are eaten
-             fruits) {
-            if (fruit.checkCollision()) {
-                fruits.remove(fruit);
-                addTail+=fruit.score;
+        for (int i=0;i<fruits.size();) {
+            if (fruits.get(i).checkCollision()) {
+                fruits.remove(i);
+                addTail+=fruits.get(i).score;
             }
+            else i++;
         }
         if (addTail>0){
             head.addTail();
             addTail--;
         }
-        boolean isOver = head.checkCollision();
-        if (!isOver && fruits.isEmpty()){
+        boolean notOver = head.checkCollision();
+        if (notOver && fruits.isEmpty()){
             fruits.addAll(fruitFactory.createFruits(FRUITS_GROUP));
         }
-        return isOver;
+        return notOver;
     }
 
     public ArrayList<BaseFruit> getFruits() {
