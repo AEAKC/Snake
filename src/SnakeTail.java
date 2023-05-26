@@ -8,7 +8,7 @@ public class SnakeTail implements SnakeComponent {
     }
     @Override
     public void move(Direction newDirection){
-        switch (newDirection){
+        switch (direction){
             case UP -> position.y++;
             case DOWN -> position.y--;
             case LEFT -> position.x--;
