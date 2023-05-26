@@ -62,7 +62,7 @@ public class SnakeTail implements SnakeComponent {
     }
 
     @Override
-    public int getSize() {
+    public Integer getSize() {
         if (tail!=null) return tail.getSize()+1;
         return 1;
     }

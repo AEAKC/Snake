@@ -110,7 +110,7 @@ public class SnakeHead implements SnakeComponent {
     }
 
     @Override
-    public int getSize() {
+    public Integer getSize() {
         if (tail==null) return 1;
         return tail.getSize()+1;
     }
