@@ -1,5 +1,5 @@
-abstract class Fruit {
-    public int Score;
+abstract class BaseFruit {
+    public int score;
     private Point position;
     String imagePath;
      public void Point_position(Point position){
@@ -7,8 +7,6 @@ abstract class Fruit {
     }
 
     public boolean checkCollision(){
-        if(){
-
-        }
+         return true;
     }
 }
