@@ -34,7 +34,7 @@ public class Controller {
         }
         boolean isOver = head.checkCollision();
         if (!isOver && fruits.isEmpty()){
-            fruitFactory.createFruits(FRUITS_GROUP);
+            fruits.addAll(fruitFactory.createFruits(FRUITS_GROUP));
         }
         return isOver;
     }
