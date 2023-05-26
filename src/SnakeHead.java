@@ -34,10 +34,7 @@ public class SnakeHead implements SnakeComponent {
         DIMENSIONS = new Point(X, Y);
     }
 
-    /**
-     * Moves whole snake to direction given
-     * @param newDirection Direction to move towards
-     */
+
     @Override
     public void move(Direction newDirection) {
         switch (newDirection){
@@ -74,11 +71,7 @@ public class SnakeHead implements SnakeComponent {
         return true;
     }
 
-    /**
-     * Checks collision against point
-     * @param point point to check collision with
-     * @return true if no collision found
-     */
+
     @Override
     public boolean checkCollision(Point point) {
         if (!point.equals(position)){
@@ -93,9 +86,7 @@ public class SnakeHead implements SnakeComponent {
                 && position.y<= DIMENSIONS.y && position.y>=0;
     }
 
-    /**
-     * Add new tail in the end of snake (MOVE REQUIRED before spawning new tail)
-     */
+
     @Override
     public void addTail() {
         if (tail == null){
@@ -110,6 +101,12 @@ public class SnakeHead implements SnakeComponent {
             tail = new SnakeTail(spawnPoint, direction);
         }
         else tail.addTail();
+    }
+
+
+    @Override
+    public SnakeComponent getTail() {
+        return tail;
     }
 
     @Override
