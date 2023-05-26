@@ -22,7 +22,7 @@ public class View extends JPanel implements Runnable {
 
     public View(Point gridSize) {
         this.gridSize = gridSize;
-        this.setPreferredSize(new Dimension(gridSize.x * tileSize, gridSize.y * tileSize));
+        this.setPreferredSize(new Dimension(gridSize.x * tileSize, gridSize.y * tileSize + 100));
         this.setBackground(Color.decode("#fd79a8"));
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
@@ -126,6 +126,12 @@ public class View extends JPanel implements Runnable {
         }
     }
 
+
+    public void addScore(Graphics2D g2)
+    {
+        g2.setFont(new Font("TimesRoman", Font.PLAIN, 60));
+        g2.drawString("Score: " + SnakeHead.getInstance().getSize().toString(),0,gridSize.y * tileSize +60);
+    }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
@@ -133,6 +139,7 @@ public class View extends JPanel implements Runnable {
         drawTail(g2);
         drawFruits(g2);
         drawGrid(g2);
+        addScore(g2);
         g2.dispose();
         System.out.println("------------------------------");
     }
