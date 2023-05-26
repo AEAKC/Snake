@@ -23,8 +23,8 @@ public class Controller {
         head.move(); // Move snake
         for (int i=0;i<fruits.size();) {
             if (fruits.get(i).checkCollision()) {
-                fruits.remove(i);
                 addTail+=fruits.get(i).score;
+                fruits.remove(i);
             }
             else i++;
         }
