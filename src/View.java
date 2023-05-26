@@ -17,7 +17,7 @@ public class View extends JPanel implements Runnable {
 
     Thread gameThread;
     KeyHandler keyH = new KeyHandler();
-    int FPS = 1;
+    int FPS = 2;
 
 
     public View(Point gridSize) {
@@ -25,10 +25,12 @@ public class View extends JPanel implements Runnable {
         this.setPreferredSize(new Dimension(gridSize.x * tileSize, gridSize.y * tileSize));
         this.setBackground(Color.decode("#fd79a8"));
         this.setDoubleBuffered(true);
+        this.addKeyListener(keyH);
         this.setFocusable(true);
         this.requestFocus();
         this.requestFocusInWindow();
-        this.addKeyListener(keyH);
+
+
 
     }
 
@@ -64,6 +66,7 @@ public class View extends JPanel implements Runnable {
 
     private void drawHead(Graphics g) {
         Image img = null;
+        System.out.println(SnakeHead.getInstance().getPosition().y);
         try {
             switch (SnakeHead.getInstance().getDirection()){
                 case DOWN->
@@ -80,13 +83,32 @@ public class View extends JPanel implements Runnable {
         }
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.black);
         g2.drawImage(img, SnakeHead.getInstance().getPosition().x * tileSize, SnakeHead.getInstance().getPosition().y * tileSize, tileSize, tileSize, null);
-        g2.dispose();
+
     }
 
 
-    private void drawTail() {
+    private void drawTail(Graphics g) {
+        super.paintComponent(g);
+        SnakeComponent snakeTail =  SnakeHead.getInstance().getTail();
+        Graphics2D g2 = (Graphics2D) g;
+        System.out.println(snakeTail.getPosition().y);
+        while (snakeTail !=null) {
+            Image img = null;
+            try {
+                switch (snakeTail.getDirection()) {
+                    case DOWN -> img = ImageIO.read(new File("resources/bodyU.png"));
+                    case UP -> img = ImageIO.read(new File("resources/bodyD.png"));
+                    case LEFT -> img = ImageIO.read(new File("resources/bodyL.png"));
+                    case RIGHT -> img = ImageIO.read(new File("resources/bodyR.png"));
+                }
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+            g2.drawImage(img, snakeTail.getPosition().x * tileSize, snakeTail.getPosition().y * tileSize, tileSize, tileSize, null);
+            snakeTail = snakeTail.getTail();
+        }
+
 
     }
 
@@ -94,5 +116,7 @@ public class View extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         drawHead(g);
+        drawTail(g);
+        System.out.println("------------------------------");
     }
 }

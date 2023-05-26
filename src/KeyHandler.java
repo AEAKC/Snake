@@ -12,7 +12,6 @@ public class KeyHandler implements KeyListener
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
-        System.out.println(e);
         if (code == KeyEvent.VK_DOWN) {
             SnakeHead.getInstance().setDirection(Direction.UP);
         }

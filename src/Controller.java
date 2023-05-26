@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Controller {
     private final int FRUITS_GROUP = 3;
-    private int addTail=0;
+    private int addTail=3;
     private SnakeHead head = SnakeHead.getInstance();
     private ArrayList<BaseFruit> fruits = new ArrayList<>();
     private static FruitFactory fruitFactory;
