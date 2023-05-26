@@ -64,7 +64,7 @@ public class View extends JPanel implements Runnable {
     }
 
 
-    private void drawHead(Graphics g) {
+    private void drawHead(Graphics2D g2) {
         Image img = null;
         System.out.println(SnakeHead.getInstance().getPosition().y);
         try {
@@ -81,17 +81,13 @@ public class View extends JPanel implements Runnable {
         } catch (IOException e) {
             System.out.println(e);
         }
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
         g2.drawImage(img, SnakeHead.getInstance().getPosition().x * tileSize, SnakeHead.getInstance().getPosition().y * tileSize, tileSize, tileSize, null);
 
     }
 
 
-    private void drawTail(Graphics g) {
-        super.paintComponent(g);
+    private void drawTail(Graphics2D g2) {
         SnakeComponent snakeTail =  SnakeHead.getInstance().getTail();
-        Graphics2D g2 = (Graphics2D) g;
         System.out.println(snakeTail.getPosition().y);
         while (snakeTail !=null) {
             Image img = null;
@@ -115,8 +111,10 @@ public class View extends JPanel implements Runnable {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        drawHead(g);
-        drawTail(g);
+        Graphics2D g2 = (Graphics2D) g;
+        drawHead(g2);
+        drawTail(g2);
+        g2.dispose();
         System.out.println("------------------------------");
     }
 }
