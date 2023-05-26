@@ -1,14 +1,16 @@
-abstract class Fruit {
+abstract class BaseFruit {
     public int Score;
-    private Point position;
+    protected Point position;
     String imagePath;
      public void Point_position(Point position){
         this.position = new Point(position);
     }
 
     public boolean checkCollision(){
-        if(){
-
+        if(SnakeHead.getInstance().getPosition().equals(position)){
+            return true;
+        }else{
+            return false;
         }
     }
 }
