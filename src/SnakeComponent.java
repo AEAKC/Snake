@@ -15,4 +15,6 @@ public interface SnakeComponent {
      */
     SnakeComponent getTail();
     int getSize();
+    Point getPosition();
+    Direction getDirection();
 }

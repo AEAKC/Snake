@@ -21,7 +21,7 @@ public class SnakeHead implements SnakeComponent {
             throw new NullPointerException("DIMENSIONS not provided. Maybe you forgot to SnakeHead.setDIMENSIONS");
         }
         position = new Point(DIMENSIONS.x/2, DIMENSIONS.y/2); // Spawn on center
-        direction = Direction.UP; // Default direction is up
+        direction = Direction.DOWN; // Default direction is down(UP)
     }
 
     public static SnakeHead getInstance() {
@@ -116,7 +116,8 @@ public class SnakeHead implements SnakeComponent {
     }
 
     public void setDirection(Direction direction) {
-        this.direction = direction;
+        if (this.direction.getVal()!=-direction.getVal())
+            this.direction = direction;
     }
 
     public Direction getDirection() {
