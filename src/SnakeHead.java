@@ -14,6 +14,7 @@ public class SnakeHead implements SnakeComponent {
     private static SnakeHead instance;
     private Point position;
     private Direction direction;
+    private Direction newDirection;
     private SnakeComponent tail;
     private static Point DIMENSIONS;
     private SnakeHead(){
@@ -21,7 +22,8 @@ public class SnakeHead implements SnakeComponent {
             throw new NullPointerException("DIMENSIONS not provided. Maybe you forgot to SnakeHead.setDIMENSIONS");
         }
         position = new Point(DIMENSIONS.x/2, DIMENSIONS.y/2); // Spawn on center
-        direction = Direction.DOWN; // Default direction is down(UP)
+        direction = Direction.UP; // Default direction is UP
+        newDirection=direction;
     }
 
     public static SnakeHead getInstance() {
@@ -38,8 +40,8 @@ public class SnakeHead implements SnakeComponent {
     @Override
     public void move(Direction newDirection) {
         switch (newDirection){
-            case UP -> position.y++;
-            case DOWN -> position.y--;
+            case UP -> position.y--;
+            case DOWN -> position.y++;
             case LEFT -> position.x--;
             case RIGHT -> position.x++;
         }
@@ -52,7 +54,7 @@ public class SnakeHead implements SnakeComponent {
      * Moves whole snake towards old direction
      */
     public void move() {
-        move(direction);
+        move(newDirection);
     }
 
     public Point getPosition() {
@@ -82,8 +84,8 @@ public class SnakeHead implements SnakeComponent {
     }
 
     private boolean checkWallsCollision() {
-        return position.x <= DIMENSIONS.x && position.x >= 0
-                && position.y<= DIMENSIONS.y && position.y>=0;
+        return position.x < DIMENSIONS.x && position.x >= 0
+                && position.y< DIMENSIONS.y && position.y>=0;
     }
 
 
@@ -93,8 +95,8 @@ public class SnakeHead implements SnakeComponent {
             Point spawnPoint = new Point(position);
             // Spawn happens after move, so this previous position of the tail must be empty
             switch (direction){
-                case UP -> spawnPoint.y--;
-                case DOWN -> spawnPoint.y++;
+                case UP -> spawnPoint.y++;
+                case DOWN -> spawnPoint.y--;
                 case LEFT -> spawnPoint.x++;
                 case RIGHT -> spawnPoint.x--;
             }
@@ -117,7 +119,7 @@ public class SnakeHead implements SnakeComponent {
 
     public void setDirection(Direction direction) {
         if (this.direction.getVal()!=-direction.getVal())
-            this.direction = direction;
+            this.newDirection = direction;
     }
 
     public Direction getDirection() {

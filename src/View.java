@@ -17,7 +17,7 @@ public class View extends JPanel implements Runnable {
 
     Thread gameThread;
     KeyHandler keyH = new KeyHandler();
-    int FPS = 2;
+    int FPS = 3;
 
 
     public View(Point gridSize) {
@@ -72,9 +72,9 @@ public class View extends JPanel implements Runnable {
         System.out.println(SnakeHead.getInstance().getPosition().y);
         try {
             switch (SnakeHead.getInstance().getDirection()){
-                case DOWN->
-                    img = ImageIO.read(new File("resources/headU.png"));
                 case UP->
+                    img = ImageIO.read(new File("resources/headU.png"));
+                case DOWN->
                     img = ImageIO.read(new File("resources/headD.png"));
                 case LEFT->
                     img = ImageIO.read(new File("resources/headL.png"));
@@ -96,8 +96,8 @@ public class View extends JPanel implements Runnable {
             Image img = null;
             try {
                 switch (snakeTail.getDirection()) {
-                    case DOWN -> img = ImageIO.read(new File("resources/bodyU.png"));
-                    case UP -> img = ImageIO.read(new File("resources/bodyD.png"));
+                    case UP -> img = ImageIO.read(new File("resources/bodyU.png"));
+                    case DOWN -> img = ImageIO.read(new File("resources/bodyD.png"));
                     case LEFT -> img = ImageIO.read(new File("resources/bodyL.png"));
                     case RIGHT -> img = ImageIO.read(new File("resources/bodyR.png"));
                 }

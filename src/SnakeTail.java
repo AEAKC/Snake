@@ -8,9 +8,9 @@ public class SnakeTail implements SnakeComponent {
     }
     @Override
     public void move(Direction newDirection){
-        switch (direction){
-            case UP -> position.y++;
-            case DOWN -> position.y--;
+        switch (newDirection){
+            case UP -> position.y--;
+            case DOWN -> position.y++;
             case LEFT -> position.x--;
             case RIGHT -> position.x++;
         }
@@ -50,8 +50,8 @@ public class SnakeTail implements SnakeComponent {
             Point spawnPoint = new Point(position);
             // Spawn happens after move, so this previous position of the tail must be empty
             switch (direction){
-                case UP -> spawnPoint.y--;
-                case DOWN -> spawnPoint.y++;
+                case UP -> spawnPoint.y++;
+                case DOWN -> spawnPoint.y--;
                 case LEFT -> spawnPoint.x++;
                 case RIGHT -> spawnPoint.x--;
             }
