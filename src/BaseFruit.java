@@ -1,6 +1,6 @@
 abstract class BaseFruit {
 
-    public int Score;
+    public int score;
     protected Point position;
 
     String imagePath;

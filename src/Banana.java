@@ -1,6 +1,6 @@
 public class Banana extends BaseFruit {
     public Banana(Point position) {
-        Score=3;
+        score =3;
         imagePath ="";
         this.position=position;
     }
