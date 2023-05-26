@@ -8,6 +8,10 @@ abstract class BaseFruit {
         this.position = new Point(position);
     }
 
+    public Point getPosition() {
+        return position;
+    }
+
     public boolean checkCollision(){
 
         if(SnakeHead.getInstance().getPosition().equals(position)){

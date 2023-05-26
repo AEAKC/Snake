@@ -17,7 +17,7 @@ public class View extends JPanel implements Runnable {
 
     Thread gameThread;
     KeyHandler keyH = new KeyHandler();
-    int FPS = 4;
+    int FPS = 2;
 
 
     public View(Point gridSize) {
@@ -45,7 +45,10 @@ public class View extends JPanel implements Runnable {
         double drawInterval = (double) 1000000000 / FPS;
         double nextDrawTime = System.nanoTime() + drawInterval;
         while (gameThread != null) {
-            Controller.getInstance().update();
+            if(!Controller.getInstance().update())
+            {
+                break;
+            }
 
             repaint();
 
@@ -104,16 +107,31 @@ public class View extends JPanel implements Runnable {
             g2.drawImage(img, snakeTail.getPosition().x * tileSize, snakeTail.getPosition().y * tileSize, tileSize, tileSize, null);
             snakeTail = snakeTail.getTail();
         }
-
-
     }
 
+
+    public void drawFruits(Graphics g2)
+    {
+        Image img = null;
+        for (BaseFruit fruit:
+             Controller.getInstance().getFruits()) {
+            try {
+                img = ImageIO.read(new File(fruit.imagePath));
+            }
+            catch (Exception e){
+                System.out.println(e);
+            }
+            System.out.println(fruit);
+            g2.drawImage(img, fruit.getPosition().x * tileSize, fruit.getPosition().y * tileSize, tileSize,tileSize,null);
+        }
+    }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         drawHead(g2);
         drawTail(g2);
+        drawFruits(g2);
         g2.dispose();
         System.out.println("------------------------------");
     }
