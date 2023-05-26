@@ -116,7 +116,8 @@ public class SnakeHead implements SnakeComponent {
     }
 
     public void setDirection(Direction direction) {
-        this.direction = direction;
+        if (this.direction.getVal()!=-direction.getVal())
+            this.direction = direction;
     }
 
     public Direction getDirection() {

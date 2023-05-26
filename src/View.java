@@ -17,7 +17,7 @@ public class View extends JPanel implements Runnable {
 
     Thread gameThread;
     KeyHandler keyH = new KeyHandler();
-    int FPS = 2;
+    int FPS = 4;
 
 
     public View(Point gridSize) {
