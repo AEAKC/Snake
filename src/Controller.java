@@ -38,4 +38,8 @@ public class Controller {
         }
         return isOver;
     }
+
+    public ArrayList<BaseFruit> getFruits() {
+        return fruits;
+    }
 }
