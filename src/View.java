@@ -132,7 +132,15 @@ public class View extends JPanel implements Runnable {
         drawHead(g2);
         drawTail(g2);
         drawFruits(g2);
+        drawGrid(g2);
         g2.dispose();
         System.out.println("------------------------------");
+    }
+
+    private void drawGrid(Graphics2D g2) {
+        for(int i=0;i<gridSize.x;i++){
+            for (int j=0;j<gridSize.y;j++)
+                g2.drawRect(i*tileSize, j*tileSize, tileSize,tileSize);
+        }
     }
 }
