@@ -70,4 +70,8 @@ public class SnakeTail implements SnakeComponent {
     public SnakeComponent getTail() {
         return tail;
     }
+
+    public Point getPosition() {
+        return position;
+    }
 }

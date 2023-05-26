@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         //Start window
         SnakeHead.setDimensions(18,16);
+        Controller.setFruitFactory(new FruitFactory());
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
