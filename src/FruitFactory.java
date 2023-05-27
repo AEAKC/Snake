@@ -13,8 +13,8 @@ class FruitFactory{
         int y = ThreadLocalRandom.current().nextInt(0, DIMENSIONS.y);
         Point position = new Point(x,y);
         while(!SnakeHead.getInstance().checkCollision(position)){
-            x = ThreadLocalRandom.current().nextInt(0, DIMENSIONS.x);
-            y = ThreadLocalRandom.current().nextInt(0, DIMENSIONS.y);
+            position.x = ThreadLocalRandom.current().nextInt(0, DIMENSIONS.x);
+            position.y = ThreadLocalRandom.current().nextInt(0, DIMENSIONS.y);
         }
         return position;
     }

@@ -38,7 +38,7 @@ public class SnakeTail implements SnakeComponent {
     public boolean checkCollision(Point point) {
         if (point.equals(position)) return false;
         if (tail==null) return true;
-        return tail.checkCollision();
+        return tail.checkCollision(point);
     }
 
     /**
